@@ -5,28 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LAKAY MARKET - Mode, Tenues & Accessoires</title>
   <style>
+    :root {
+      --bg-color: #f5f6fa;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --subtext-color: #7f8c8d;
+      --header-bg: #1e272e;
+      --header-text: #ffffff;
+      --border-color: #dcdde1;
+      --sidebar-user-bg: #f1f2f6;
+      --shadow-color: rgba(0,0,0,0.05);
+    }
+
+    /* Mode Sombre Variables */
+    body.dark-mode {
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --subtext-color: #a0a0a0;
+      --header-bg: #0d1117;
+      --header-text: #ffffff;
+      --border-color: #333333;
+      --sidebar-user-bg: #2a2a2a;
+      --shadow-color: rgba(0,0,0,0.5);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     body {
-      background-color: #f5f6fa;
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       padding-bottom: 50px;
     }
 
     /* Header */
     header {
-      background-color: #1e272e;
-      color: white;
+      background-color: var(--header-bg);
+      color: var(--header-text);
       padding: 15px 20px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px var(--shadow-color);
     }
 
     .header-content {
@@ -63,8 +89,9 @@
       left: -300px;
       width: 280px;
       height: 100%;
-      background-color: #ffffff;
-      box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      box-shadow: 4px 0 15px var(--shadow-color);
       z-index: 1001;
       transition: left 0.3s ease;
       display: flex;
@@ -77,7 +104,7 @@
     }
 
     .sidebar-header {
-      background-color: #1e272e;
+      background-color: var(--header-bg);
       color: white;
       padding: 20px;
       display: flex;
@@ -94,27 +121,26 @@
     }
 
     .user-box {
-      background: #f1f2f6;
+      background: var(--sidebar-user-bg);
       padding: 15px 20px;
-      border-bottom: 1px solid #e1e2e6;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .user-box p {
       font-size: 14px;
       font-weight: bold;
-      color: #2c3e50;
       margin-bottom: 8px;
     }
 
     .menu-section {
       padding: 15px 20px;
-      border-bottom: 1px solid #f1f2f6;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .menu-section h4 {
       font-size: 12px;
       text-transform: uppercase;
-      color: #7f8c8d;
+      color: var(--subtext-color);
       margin-bottom: 10px;
       letter-spacing: 0.5px;
     }
@@ -129,7 +155,7 @@
 
     .menu-links a {
       text-decoration: none;
-      color: #2c3e50;
+      color: var(--text-color);
       font-size: 14px;
       font-weight: 500;
       display: block;
@@ -139,6 +165,65 @@
 
     .menu-links a:hover {
       color: #e1b12c;
+    }
+
+    /* Toggle Dark Mode Switch */
+    .theme-toggle-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+    }
+
+    .theme-toggle-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-color);
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #e1b12c;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(22px);
     }
 
     .overlay {
@@ -166,11 +251,13 @@
     .search-bar {
       width: 100%;
       padding: 12px 18px;
-      border: 2px solid #dcdde1;
+      border: 2px solid var(--border-color);
+      background-color: var(--card-bg);
+      color: var(--text-color);
       border-radius: 25px;
       font-size: 15px;
       outline: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 5px var(--shadow-color);
     }
 
     .categories {
@@ -207,12 +294,13 @@
     }
 
     .product-card {
-      background: white;
+      background: var(--card-bg);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px var(--shadow-color);
       display: flex;
       flex-direction: column;
+      border: 1px solid var(--border-color);
     }
 
     .product-img {
@@ -232,7 +320,7 @@
     .product-category {
       font-size: 11px;
       text-transform: uppercase;
-      color: #7f8c8d;
+      color: var(--subtext-color);
       font-weight: bold;
     }
 
@@ -250,7 +338,7 @@
 
     .product-price {
       font-size: 16px;
-      color: #2c3e50;
+      color: var(--text-color);
       font-weight: bold;
       margin-top: auto;
       margin-bottom: 10px;
@@ -302,13 +390,15 @@
     }
 
     .modal-content {
-      background: white;
+      background: var(--card-bg);
+      color: var(--text-color);
       padding: 25px;
       border-radius: 12px;
       width: 100%;
       max-width: 380px;
       position: relative;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 5px 15px var(--shadow-color);
+      border: 1px solid var(--border-color);
     }
 
     .close-modal {
@@ -317,12 +407,11 @@
       right: 15px;
       font-size: 22px;
       cursor: pointer;
-      color: #7f8c8d;
+      color: var(--subtext-color);
     }
 
     .modal h2 {
       margin-bottom: 15px;
-      color: #1e272e;
       font-size: 20px;
       text-align: center;
     }
@@ -335,13 +424,15 @@
       display: block;
       font-size: 13px;
       margin-bottom: 5px;
-      color: #555;
+      color: var(--subtext-color);
     }
 
     .form-group input {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-color);
+      color: var(--text-color);
       border-radius: 6px;
       font-size: 14px;
       outline: none;
@@ -363,7 +454,7 @@
       text-align: center;
       padding: 20px;
       font-size: 13px;
-      color: #7f8c8d;
+      color: var(--subtext-color);
     }
   </style>
 </head>
@@ -401,11 +492,22 @@
       <button id="logoutBtn" style="display:none; color:#e74c3c; background:none; border:none; cursor:pointer; font-size:13px; margin-top:5px;" onclick="logout()">Déconnexion</button>
     </div>
 
+    <!-- Option Mode Sombre -->
+    <div class="menu-section">
+      <div class="theme-toggle-container">
+        <span class="theme-toggle-label">🌙 Mode Sombre</span>
+        <label class="switch">
+          <input type="checkbox" id="themeToggle" onchange="toggleDarkMode()">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
     <!-- Catégories de vente -->
     <div class="menu-section">
       <h4>Catégories de vente</h4>
       <ul class="menu-links">
-        <li><a href="#" onclick="selectCategory('all')">🛍️ Tout afficher</a></li>
+        <li><a href="#" onclick="selectCategory('all')">🛍️️ Tout afficher</a></li>
         <li><a href="#" onclick="selectCategory('hommes')">👔 Tenues pour Hommes</a></li>
         <li><a href="#" onclick="selectCategory('femmes')">👗 Tenues pour Femmes</a></li>
         <li><a href="#" onclick="selectCategory('chaussures')">👟 Chaussures</a></li>
@@ -549,7 +651,7 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('aboutModal')">&times;</span>
       <h2>À propos de Lakay Market</h2>
-      <p style="font-size:14px; color:#555; line-height:1.6; margin-top:10px;">
+      <p style="font-size:14px; line-height:1.6; margin-top:10px;">
         <strong>Lakay Market</strong> est votre plateforme haïtienne dédiée à la vente de vêtements, accessoires, chaussures et matériels de qualité.<br><br>
         Notre objectif est d'offrir une expérience simple, rapide et directe par WhatsApp.
       </p>
@@ -604,6 +706,26 @@
       document.getElementById(id).style.display = 'none';
     }
 
+    /* Mode Sombre Control */
+    function toggleDarkMode() {
+      const isDark = document.getElementById('themeToggle').checked;
+      if (isDark) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('lakay_theme', 'dark');
+      } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('lakay_theme', 'light');
+      }
+    }
+
+    function checkSavedTheme() {
+      const savedTheme = localStorage.getItem('lakay_theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('themeToggle').checked = true;
+      }
+    }
+
     function handleSignup(e) {
       e.preventDefault();
       const name = document.getElementById('signupName').value;
@@ -643,7 +765,9 @@
       }
     }
 
+    // Chargement initial
     checkUserLoggedIn();
+    checkSavedTheme();
   </script>
 </body>
 </html>

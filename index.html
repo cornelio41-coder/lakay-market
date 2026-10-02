@@ -41,7 +41,7 @@
     body {
       background-color: var(--bg-color);
       color: var(--text-color);
-      padding-bottom: 50px;
+      padding-bottom: 70px;
     }
 
     /* Header */
@@ -344,18 +344,40 @@
       margin-bottom: 10px;
     }
 
+    .product-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .btn-add-cart {
+      background-color: #e1b12c;
+      color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background 0.2s;
+    }
+
+    .btn-add-cart:hover {
+      background-color: #c49b23;
+    }
+
     .btn-buy {
       background-color: #25D366;
       color: white;
       border: none;
-      padding: 9px;
+      padding: 8px;
       border-radius: 6px;
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
       text-align: center;
       display: block;
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .btn-auth-menu {
@@ -372,6 +394,83 @@
 
     .btn-signup-menu {
       background-color: #e1b12c;
+    }
+
+    /* Floating Cart Button */
+    .cart-float-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #1e272e;
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      z-index: 999;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background-color: #e74c3c;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 3px 7px;
+      border-radius: 50%;
+    }
+
+    /* Cart Modal Details */
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .cart-item-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-item-title {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .cart-item-price {
+      font-size: 12px;
+      color: var(--subtext-color);
+    }
+
+    .cart-item-remove {
+      color: #e74c3c;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 0 5px;
+    }
+
+    .cart-total-box {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 2px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     /* Modal / Pop-up Styles */
@@ -395,10 +494,12 @@
       padding: 25px;
       border-radius: 12px;
       width: 100%;
-      max-width: 380px;
+      max-width: 400px;
       position: relative;
       box-shadow: 0 5px 15px var(--shadow-color);
       border: 1px solid var(--border-color);
+      max-height: 85vh;
+      overflow-y: auto;
     }
 
     .close-modal {
@@ -440,14 +541,15 @@
 
     .form-submit {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       background-color: #1e272e;
       color: white;
       border: none;
       border-radius: 6px;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 15px;
+      font-size: 14px;
     }
 
     footer {
@@ -507,7 +609,7 @@
     <div class="menu-section">
       <h4>Catégories de vente</h4>
       <ul class="menu-links">
-        <li><a href="#" onclick="selectCategory('all')">🛍️️ Tout afficher</a></li>
+        <li><a href="#" onclick="selectCategory('all')">🛍 Tout afficher</a></li>
         <li><a href="#" onclick="selectCategory('hommes')">👔 Tenues pour Hommes</a></li>
         <li><a href="#" onclick="selectCategory('femmes')">👗 Tenues pour Femmes</a></li>
         <li><a href="#" onclick="selectCategory('chaussures')">👟 Chaussures</a></li>
@@ -550,7 +652,10 @@
         <h3 class="product-title">Robe Élégante d'Été</h3>
         <p class="product-location">📍 Jacmel</p>
         <div class="product-price">2 500 HTG</div>
-        <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20la%20Robe%20Élégante%20d'Été" class="btn-buy" target="_blank">Commander sur WhatsApp</a>
+        <div class="product-actions">
+          <button class="btn-add-cart" onclick="addToCart('Robe Élégante d\'Été', 2500)">🛒 Ajouter au panier</button>
+          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20la%20Robe%20Élégante%20d'Été" class="btn-buy" target="_blank">Acheter directement</a>
+        </div>
       </div>
     </div>
 
@@ -562,7 +667,10 @@
         <h3 class="product-title">Ensemble Homme Tendance</h3>
         <p class="product-location">📍 Jacmel</p>
         <div class="product-price">3 500 HTG</div>
-        <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20l'Ensemble%20Homme%20Tendance" class="btn-buy" target="_blank">Commander sur WhatsApp</a>
+        <div class="product-actions">
+          <button class="btn-add-cart" onclick="addToCart('Ensemble Homme Tendance', 3500)">🛒 Ajouter au panier</button>
+          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20l'Ensemble%20Homme%20Tendance" class="btn-buy" target="_blank">Acheter directement</a>
+        </div>
       </div>
     </div>
 
@@ -574,7 +682,10 @@
         <h3 class="product-title">Baskets Sport Red</h3>
         <p class="product-location">📍 Jacmel</p>
         <div class="product-price">4 000 HTG</div>
-        <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20les%20Baskets%20Sport%20Red" class="btn-buy" target="_blank">Commander sur WhatsApp</a>
+        <div class="product-actions">
+          <button class="btn-add-cart" onclick="addToCart('Baskets Sport Red', 4000)">🛒 Ajouter au panier</button>
+          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20les%20Baskets%20Sport%20Red" class="btn-buy" target="_blank">Acheter directement</a>
+        </div>
       </div>
     </div>
 
@@ -586,7 +697,10 @@
         <h3 class="product-title">Montre Moderne Homme</h3>
         <p class="product-location">📍 Jacmel</p>
         <div class="product-price">1 800 HTG</div>
-        <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20la%20Montre%20Moderne%20Homme" class="btn-buy" target="_blank">Commander sur WhatsApp</a>
+        <div class="product-actions">
+          <button class="btn-add-cart" onclick="addToCart('Montre Moderne Homme', 1800)">🛒 Ajouter au panier</button>
+          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20la%20Montre%20Moderne%20Homme" class="btn-buy" target="_blank">Acheter directement</a>
+        </div>
       </div>
     </div>
 
@@ -598,10 +712,35 @@
         <h3 class="product-title">Casque Sans Fil Bluetooth</h3>
         <p class="product-location">📍 Jacmel</p>
         <div class="product-price">2 200 HTG</div>
-        <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20le%20Casque%20Sans%20Fil%20Bluetooth" class="btn-buy" target="_blank">Commander sur WhatsApp</a>
+        <div class="product-actions">
+          <button class="btn-add-cart" onclick="addToCart('Casque Sans Fil Bluetooth', 2200)">🛒 Ajouter au panier</button>
+          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20le%20Casque%20Sans%20Fil%20Bluetooth" class="btn-buy" target="_blank">Acheter directement</a>
+        </div>
       </div>
     </div>
 
+  </div>
+
+  <!-- Bouton Flottant Panier -->
+  <button class="cart-float-btn" onclick="openModal('cartModal')">
+    🛒
+    <span class="cart-badge" id="cartCount">0</span>
+  </button>
+
+  <!-- Modal Panier -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('cartModal')">&times;</span>
+      <h2>Votre Panier 🛒</h2>
+      <div id="cartItemsList">
+        <p style="text-align:center; color: var(--subtext-color); margin: 20px 0;">Votre panier est vide.</p>
+      </div>
+      <div class="cart-total-box">
+        <span>Total :</span>
+        <span id="cartTotalPrice">0 HTG</span>
+      </div>
+      <button class="form-submit" style="background-color: #25D366;" onclick="checkoutCart()">Commander via WhatsApp</button>
+    </div>
   </div>
 
   <!-- Modal Connexion -->
@@ -663,6 +802,8 @@
   </footer>
 
   <script>
+    let cart = [];
+
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('open');
       document.getElementById('overlay').classList.toggle('active');
@@ -704,6 +845,76 @@
 
     function closeModal(id) {
       document.getElementById(id).style.display = 'none';
+    }
+
+    /* Gestion du Panier */
+    function addToCart(title, price) {
+      const existing = cart.find(item => item.title === title);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ title, price, quantity: 1 });
+      }
+      updateCartUI();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById('cartCount');
+      const listEl = document.getElementById('cartItemsList');
+      const totalEl = document.getElementById('cartTotalPrice');
+
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      listEl.innerHTML = '';
+
+      if (cart.length === 0) {
+        listEl.innerHTML = '<p style="text-align:center; color: var(--subtext-color); margin: 20px 0;">Votre panier est vide.</p>';
+      } else {
+        cart.forEach((item, index) => {
+          totalItems += item.quantity;
+          totalPrice += item.price * item.quantity;
+
+          const itemEl = document.createElement('div');
+          itemEl.className = 'cart-item';
+          itemEl.innerHTML = `
+            <div class="cart-item-details">
+              <span class="cart-item-title">${item.title} (x${item.quantity})</span>
+              <span class="cart-item-price">${item.price * item.quantity} HTG</span>
+            </div>
+            <button class="cart-item-remove" onclick="removeFromCart(${index})">&times;</button>
+          `;
+          listEl.appendChild(itemEl);
+        });
+      }
+
+      countEl.innerText = totalItems;
+      totalEl.innerText = totalPrice.toLocaleString() + ' HTG';
+    }
+
+    function checkoutCart() {
+      if (cart.length === 0) {
+        alert('Votre panier est vide !');
+        return;
+      }
+
+      let message = "Bonjour Lakay Market, je souhaite passer la commande suivante :\n\n";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        message += `${index + 1}. ${item.title} (x${item.quantity}) - ${item.price * item.quantity} HTG\n`;
+        total += item.price * item.quantity;
+      });
+
+      message += `\n*Total : ${total.toLocaleString()} HTG*`;
+
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/50944938604?text=${encodedMessage}`, '_blank');
     }
 
     /* Mode Sombre Control */

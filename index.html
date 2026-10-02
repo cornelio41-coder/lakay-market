@@ -3,206 +3,234 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Lakay Market 🇭🇹</title>
-
+  <title>LAKAY MARKET - Mode & Accessoires</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      background: #f5f5f5;
-      color: #222;
+      background-color: #f5f6fa;
+      color: #333;
+      padding-bottom: 40px;
     }
 
     header {
-      background: #111;
+      background-color: #1e272e;
       color: white;
-      padding: 20px;
+      padding: 20px 15px;
       text-align: center;
     }
 
     header h1 {
-      font-size: 28px;
+      font-size: 24px;
+      margin-bottom: 5px;
     }
 
     header p {
-      margin-top: 5px;
       font-size: 14px;
+      font-style: italic;
+      color: #dcdde1;
     }
 
-    .search {
+    .search-container {
       padding: 15px;
-      background: white;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .search input {
+    .search-bar {
       width: 100%;
-      padding: 13px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
+      padding: 12px 15px;
+      border: 2px solid #dcdde1;
+      border-radius: 25px;
+      font-size: 15px;
+      outline: none;
     }
 
     .categories {
-      padding: 15px;
-    }
-
-    .categories h2 {
-      margin-bottom: 12px;
-    }
-
-    .category-list {
       display: flex;
+      justify-content: center;
       gap: 10px;
-      overflow-x: auto;
+      padding: 0 15px 15px;
+      flex-wrap: wrap;
     }
 
-    .category {
-      min-width: 100px;
-      background: white;
-      padding: 15px 10px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    .cat-btn {
+      padding: 8px 16px;
+      border: none;
+      background-color: #e1b12c;
+      color: white;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    .products {
-      padding: 15px;
+    .cat-btn:hover {
+      background-color: #c49b23;
     }
 
-    .products h2 {
-      margin-bottom: 15px;
-    }
-
-    .product-grid {
+    .products-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+      padding: 15px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    .product {
+    .product-card {
       background: white;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
     }
 
-    .product img {
+    .product-img {
       width: 100%;
-      height: 150px;
+      height: 180px;
       object-fit: cover;
+      background-color: #eaeaea;
     }
 
     .product-info {
-      padding: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
-    .product h3 {
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
-
-    .price {
+    .product-category {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #7f8c8d;
       font-weight: bold;
-      margin-bottom: 5px;
     }
 
-    .location {
-      font-size: 13px;
-      color: #777;
+    .product-title {
+      font-size: 15px;
+      margin: 5px 0;
+      font-weight: 600;
+    }
+
+    .product-price {
+      font-size: 16px;
+      color: #e1b12c;
+      font-weight: bold;
+      margin-top: auto;
       margin-bottom: 10px;
     }
 
-    .contact {
-      display: block;
-      background: #111;
+    .btn-buy {
+      background-color: #25D366;
       color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
       text-decoration: none;
-      padding: 9px;
       text-align: center;
-      border-radius: 7px;
-    }
-
-    footer {
-      margin-top: 30px;
-      padding: 20px;
-      text-align: center;
-      background: #111;
-      color: white;
+      display: block;
       font-size: 13px;
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <h1>🇭🇹 LAKAY MARKET</h1>
-  <p>Achte lakay, vann lakay.</p>
-</header>
+  <header>
+    <h1>🇭🇹 LAKAY MARKET</h1>
+    <p>Achte lakay, vann lakay.</p>
+  </header>
 
-<div class="search">
-  <input type="text" placeholder="🔎 Rechercher un produit...">
-</div>
-
-<section class="categories">
-  <h2>Catégories</h2>
-
-  <div class="category-list">
-    <div class="category">📱<br>Électronique</div>
-    <div class="category">👕<br>Mode</div>
-    <div class="category">🎨<br>Artisanat</div>
-    <div class="category">🍔<br>Alimentation</div>
-    <div class="category">💄<br>Beauté</div>
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Chercher une tenue, un accessoire..." onkeyup="filterProducts()">
   </div>
-</section>
 
-<section class="products">
+  <div class="categories">
+    <button class="cat-btn" onclick="filterCategory('all')">Tout</button>
+    <button class="cat-btn" onclick="filterCategory('tenue')">Tenues</button>
+    <button class="cat-btn" onclick="filterCategory('accessoire')">Accessoires</button>
+  </div>
 
-  <h2>🔥 Produits récents</h2>
+  <div class="products-grid" id="productsGrid">
 
-  <div class="product-grid">
-
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500" alt="Téléphone">
-
+    <!-- Produit 1 -->
+    <div class="product-card" data-category="tenue">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" alt="Robe d'été" class="product-img">
       <div class="product-info">
-        <h3>Samsung Galaxy</h3>
-        <p class="price">25 000 HTG</p>
-        <p class="location">📍 Jacmel</p>
-
-        <a class="contact" href="#">
-          💬 Contacter
-        </a>
+        <span class="product-category">Tenue</span>
+        <h3 class="product-title">Robe Élégante d'Été</h3>
+        <div class="product-price">2500 HTG</div>
+        <a href="https://wa.me/?text=Bonjour,%20je%20suis%20intéressé%20par%20la%20Robe%20Élégante" class="btn-buy" target="_blank">Commander WhatsApp</a>
       </div>
     </div>
 
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500" alt="Vêtement">
-
+    <!-- Produit 2 -->
+    <div class="product-card" data-category="accessoire">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Montre" class="product-img">
       <div class="product-info">
-        <h3>Ensemble homme</h3>
-        <p class="price">3 500 HTG</p>
-        <p class="location">📍 Jacmel</p>
+        <span class="product-category">Accessoire</span>
+        <h3 class="product-title">Montre Moderne Homme</h3>
+        <div class="product-price">1800 HTG</div>
+        <a href="https://wa.me/?text=Bonjour,%20je%20suis%20intéressé%20par%20la%20Montre%20Moderne" class="btn-buy" target="_blank">Commander WhatsApp</a>
+      </div>
+    </div>
 
-        <a class="contact" href="#">
-          💬 Contacter
-        </a>
+    <!-- Produit 3 -->
+    <div class="product-card" data-category="tenue">
+      <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" alt="T-Shirt" class="product-img">
+      <div class="product-info">
+        <span class="product-category">Tenue</span>
+        <h3 class="product-title">T-Shirt Coton Premium</h3>
+        <div class="product-price">1200 HTG</div>
+        <a href="https://wa.me/?text=Bonjour,%20je%20suis%20intéressé%20par%20le%20T-Shirt%20Coton" class="btn-buy" target="_blank">Commander WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Produit 4 -->
+    <div class="product-card" data-category="accessoire">
+      <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500" alt="Sac à main" class="product-img">
+      <div class="product-info">
+        <span class="product-category">Accessoire</span>
+        <h3 class="product-title">Sac à Main en Cuir</h3>
+        <div class="product-price">3200 HTG</div>
+        <a href="https://wa.me/?text=Bonjour,%20je%20suis%20intéressé%20par%20le%20Sac%20à%20Main" class="btn-buy" target="_blank">Commander WhatsApp</a>
       </div>
     </div>
 
   </div>
 
-</section>
+  <script>
+    function filterProducts() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.getElementsByClassName('product-card');
 
-<footer>
-  © 2026 Lakay Market 🇭🇹
-</footer>
+      Array.from(cards).forEach(card => {
+        const title = card.querySelector('.product-title').innerText.toLowerCase();
+        if (title.includes(input)) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
 
+    function filterCategory(cat) {
+      const cards = document.getElementsByClassName('product-card');
+      Array.from(cards).forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
 </body>
 </html>

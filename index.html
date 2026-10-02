@@ -3,7 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LAKAY MARKET - Mode, Tenues & Accessoires</title>
+  
+  <!-- Titre optimisé pour Google -->
+  <title>LAKAY MARKET | Acheter et vendre en Haïti (Mode & Accessoires)</title>
+  
+  <!-- Description affichée sous votre lien dans Google -->
+  <meta name="description" content="Découvrez Lakay Market : votre boutique en ligne en Haïti pour commander des vêtements, chaussures et accessoires pour hommes et femmes avec livraison directe via WhatsApp.">
+  
+  <!-- Mots-clés pertinents -->
+  <meta name="keywords" content="Lakay Market, achat en ligne Haïti, boutique Jacmel, mode Haïti, vêtements homme femme, chaussures">
+  
+  <!-- Métadonnées pour le partage sur Facebook / WhatsApp -->
+  <meta property="og:title" content="LAKAY MARKET - Achte lakay, vann lakay">
+  <meta property="og:description" content="Commandez vos tenues, chaussures et accessoires préférés directement via WhatsApp en Haïti.">
+  <meta property="og:type" content="website">
+
   <style>
     :root {
       --bg-color: #f5f6fa;
@@ -565,7 +579,7 @@
   <!-- Header -->
   <header>
     <div class="header-content">
-      <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+      <button class="menu-toggle" onclick="toggleSidebar()" aria-label="Ouvrir le menu">☰</button>
       <div class="brand">
         <h1>🇭🇹 LAKAY MARKET</h1>
         <p>Achte lakay, vann lakay.</p>
@@ -578,10 +592,10 @@
   <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
   <!-- Sidebar Menu -->
-  <div class="sidebar" id="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <h2>Menu</h2>
-      <button class="close-sidebar" onclick="toggleSidebar()">&times;</button>
+      <button class="close-sidebar" onclick="toggleSidebar()" aria-label="Fermer le menu">&times;</button>
     </div>
 
     <!-- Espace Compte / Auth -->
@@ -609,12 +623,12 @@
     <div class="menu-section">
       <h4>Catégories de vente</h4>
       <ul class="menu-links">
-        <li><a href="#" onclick="selectCategory('all')">🛍 Tout afficher</a></li>
-        <li><a href="#" onclick="selectCategory('hommes')">👔 Tenues pour Hommes</a></li>
-        <li><a href="#" onclick="selectCategory('femmes')">👗 Tenues pour Femmes</a></li>
-        <li><a href="#" onclick="selectCategory('chaussures')">👟 Chaussures</a></li>
-        <li><a href="#" onclick="selectCategory('accessoire')">💍 Accessoires & Bijoux</a></li>
-        <li><a href="#" onclick="selectCategory('materiels')">📱 Matériels & Électronique</a></li>
+        <li><a href="javascript:void(0)" onclick="selectCategory('all')">🛍 Tout afficher</a></li>
+        <li><a href="javascript:void(0)" onclick="selectCategory('hommes')">👔 Tenues pour Hommes</a></li>
+        <li><a href="javascript:void(0)" onclick="selectCategory('femmes')">👗 Tenues pour Femmes</a></li>
+        <li><a href="javascript:void(0)" onclick="selectCategory('chaussures')">👟 Chaussures</a></li>
+        <li><a href="javascript:void(0)" onclick="selectCategory('accessoire')">💍 Accessoires & Bijoux</a></li>
+        <li><a href="javascript:void(0)" onclick="selectCategory('materiels')">📱 Matériels & Électronique</a></li>
       </ul>
     </div>
 
@@ -622,107 +636,109 @@
     <div class="menu-section">
       <h4>À propos du site</h4>
       <ul class="menu-links">
-        <li><a href="#" onclick="openModal('aboutModal')">ℹ️ Qui sommes-nous ?</a></li>
-        <li><a href="https://wa.me/50944938604" target="_blank">📞 Contact / Support</a></li>
+        <li><a href="javascript:void(0)" onclick="openModal('aboutModal')">ℹ️ Qui sommes-nous ?</a></li>
+        <li><a href="https://wa.me/50944938604" target="_blank" rel="noopener">📞 Contact / Support</a></li>
       </ul>
     </div>
-  </div>
+  </aside>
 
   <!-- Contenu Principal -->
-  <div class="search-container">
-    <input type="text" id="searchInput" class="search-bar" placeholder="Chercher un vêtement, chaussures, matériels..." onkeyup="filterProducts()">
-  </div>
-
-  <div class="categories">
-    <button class="cat-btn" onclick="filterCategory('all')">Tout</button>
-    <button class="cat-btn" onclick="filterCategory('hommes')">Hommes</button>
-    <button class="cat-btn" onclick="filterCategory('femmes')">Femmes</button>
-    <button class="cat-btn" onclick="filterCategory('chaussures')">Chaussures</button>
-    <button class="cat-btn" onclick="filterCategory('accessoire')">Accessoires</button>
-    <button class="cat-btn" onclick="filterCategory('materiels')">Matériels</button>
-  </div>
-
-  <div class="products-grid" id="productsGrid">
-
-    <!-- Produit 1 -->
-    <div class="product-card" data-category="femmes">
-      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" alt="Robe d'été" class="product-img">
-      <div class="product-info">
-        <span class="product-category">Tenue Femmes</span>
-        <h3 class="product-title">Robe Élégante d'Été</h3>
-        <p class="product-location">📍 Jacmel</p>
-        <div class="product-price">2 500 HTG</div>
-        <div class="product-actions">
-          <button class="btn-add-cart" onclick="addToCart('Robe Élégante d\'Été', 2500)">🛒 Ajouter au panier</button>
-          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20la%20Robe%20Élégante%20d'Été" class="btn-buy" target="_blank">Acheter directement</a>
-        </div>
-      </div>
+  <main>
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-bar" placeholder="Chercher un vêtement, chaussures, matériels..." onkeyup="filterProducts()">
     </div>
 
-    <!-- Produit 2 -->
-    <div class="product-card" data-category="hommes">
-      <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500" alt="Ensemble Homme" class="product-img">
-      <div class="product-info">
-        <span class="product-category">Tenue Hommes</span>
-        <h3 class="product-title">Ensemble Homme Tendance</h3>
-        <p class="product-location">📍 Jacmel</p>
-        <div class="product-price">3 500 HTG</div>
-        <div class="product-actions">
-          <button class="btn-add-cart" onclick="addToCart('Ensemble Homme Tendance', 3500)">🛒 Ajouter au panier</button>
-          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20l'Ensemble%20Homme%20Tendance" class="btn-buy" target="_blank">Acheter directement</a>
-        </div>
-      </div>
+    <div class="categories">
+      <button class="cat-btn" onclick="filterCategory('all')">Tout</button>
+      <button class="cat-btn" onclick="filterCategory('hommes')">Hommes</button>
+      <button class="cat-btn" onclick="filterCategory('femmes')">Femmes</button>
+      <button class="cat-btn" onclick="filterCategory('chaussures')">Chaussures</button>
+      <button class="cat-btn" onclick="filterCategory('accessoire')">Accessoires</button>
+      <button class="cat-btn" onclick="filterCategory('materiels')">Matériels</button>
     </div>
 
-    <!-- Produit 3 -->
-    <div class="product-card" data-category="chaussures">
-      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Baskets" class="product-img">
-      <div class="product-info">
-        <span class="product-category">Chaussures</span>
-        <h3 class="product-title">Baskets Sport Red</h3>
-        <p class="product-location">📍 Jacmel</p>
-        <div class="product-price">4 000 HTG</div>
-        <div class="product-actions">
-          <button class="btn-add-cart" onclick="addToCart('Baskets Sport Red', 4000)">🛒 Ajouter au panier</button>
-          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20les%20Baskets%20Sport%20Red" class="btn-buy" target="_blank">Acheter directement</a>
+    <div class="products-grid" id="productsGrid">
+
+      <!-- Produit 1 -->
+      <div class="product-card" data-category="femmes">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500" alt="Robe d'été" class="product-img">
+        <div class="product-info">
+          <span class="product-category">Tenue Femmes</span>
+          <h3 class="product-title">Robe Élégante d'Été</h3>
+          <p class="product-location">📍 Jacmel</p>
+          <div class="product-price">2 500 HTG</div>
+          <div class="product-actions">
+            <button class="btn-add-cart" onclick="addToCart('Robe Élégante d\'Été', 2500)">🛒 Ajouter au panier</button>
+            <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20la%20Robe%20Élégante%20d'Été" class="btn-buy" target="_blank" rel="noopener">Acheter directement</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Produit 4 -->
-    <div class="product-card" data-category="accessoire">
-      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Montre" class="product-img">
-      <div class="product-info">
-        <span class="product-category">Accessoires</span>
-        <h3 class="product-title">Montre Moderne Homme</h3>
-        <p class="product-location">📍 Jacmel</p>
-        <div class="product-price">1 800 HTG</div>
-        <div class="product-actions">
-          <button class="btn-add-cart" onclick="addToCart('Montre Moderne Homme', 1800)">🛒 Ajouter au panier</button>
-          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20la%20Montre%20Moderne%20Homme" class="btn-buy" target="_blank">Acheter directement</a>
+      <!-- Produit 2 -->
+      <div class="product-card" data-category="hommes">
+        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500" alt="Ensemble Homme" class="product-img">
+        <div class="product-info">
+          <span class="product-category">Tenue Hommes</span>
+          <h3 class="product-title">Ensemble Homme Tendance</h3>
+          <p class="product-location">📍 Jacmel</p>
+          <div class="product-price">3 500 HTG</div>
+          <div class="product-actions">
+            <button class="btn-add-cart" onclick="addToCart('Ensemble Homme Tendance', 3500)">🛒 Ajouter au panier</button>
+            <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20l'Ensemble%20Homme%20Tendance" class="btn-buy" target="_blank" rel="noopener">Acheter directement</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Produit 5 -->
-    <div class="product-card" data-category="materiels">
-      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Casque Audio" class="product-img">
-      <div class="product-info">
-        <span class="product-category">Matériels</span>
-        <h3 class="product-title">Casque Sans Fil Bluetooth</h3>
-        <p class="product-location">📍 Jacmel</p>
-        <div class="product-price">2 200 HTG</div>
-        <div class="product-actions">
-          <button class="btn-add-cart" onclick="addToCart('Casque Sans Fil Bluetooth', 2200)">🛒 Ajouter au panier</button>
-          <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20le%20Casque%20Sans%20Fil%20Bluetooth" class="btn-buy" target="_blank">Acheter directement</a>
+      <!-- Produit 3 -->
+      <div class="product-card" data-category="chaussures">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Baskets" class="product-img">
+        <div class="product-info">
+          <span class="product-category">Chaussures</span>
+          <h3 class="product-title">Baskets Sport Red</h3>
+          <p class="product-location">📍 Jacmel</p>
+          <div class="product-price">4 000 HTG</div>
+          <div class="product-actions">
+            <button class="btn-add-cart" onclick="addToCart('Baskets Sport Red', 4000)">🛒 Ajouter au panier</button>
+            <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20les%20Baskets%20Sport%20Red" class="btn-buy" target="_blank" rel="noopener">Acheter directement</a>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
+      <!-- Produit 4 -->
+      <div class="product-card" data-category="accessoire">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Montre" class="product-img">
+        <div class="product-info">
+          <span class="product-category">Accessoires</span>
+          <h3 class="product-title">Montre Moderne Homme</h3>
+          <p class="product-location">📍 Jacmel</p>
+          <div class="product-price">1 800 HTG</div>
+          <div class="product-actions">
+            <button class="btn-add-cart" onclick="addToCart('Montre Moderne Homme', 1800)">🛒 Ajouter au panier</button>
+            <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20la%20Montre%20Moderne%20Homme" class="btn-buy" target="_blank" rel="noopener">Acheter directement</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 5 -->
+      <div class="product-card" data-category="materiels">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Casque Audio" class="product-img">
+        <div class="product-info">
+          <span class="product-category">Matériels</span>
+          <h3 class="product-title">Casque Sans Fil Bluetooth</h3>
+          <p class="product-location">📍 Jacmel</p>
+          <div class="product-price">2 200 HTG</div>
+          <div class="product-actions">
+            <button class="btn-add-cart" onclick="addToCart('Casque Sans Fil Bluetooth', 2200)">🛒 Ajouter au panier</button>
+            <a href="https://wa.me/50944938604?text=Bonjour%20Lakay%20Market,%20je%20suis%20intéressé(e)%20par%20le%20Casque%20Sans%20Fil%20Bluetooth" class="btn-buy" target="_blank" rel="noopener">Acheter directement</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
 
   <!-- Bouton Flottant Panier -->
-  <button class="cart-float-btn" onclick="openModal('cartModal')">
+  <button class="cart-float-btn" onclick="openModal('cartModal')" aria-label="Voir le panier">
     🛒
     <span class="cart-badge" id="cartCount">0</span>
   </button>
@@ -750,12 +766,12 @@
       <h2>Connexion</h2>
       <form onsubmit="handleLogin(event)">
         <div class="form-group">
-          <label>Email ou Téléphone</label>
-          <input type="text" required id="loginEmail">
+          <label for="loginEmail">Email ou Téléphone</label>
+          <input type="text" id="loginEmail" required>
         </div>
         <div class="form-group">
-          <label>Mot de passe</label>
-          <input type="password" required id="loginPassword">
+          <label for="loginPassword">Mot de passe</label>
+          <input type="password" id="loginPassword" required>
         </div>
         <button type="submit" class="form-submit">Se connecter</button>
       </form>
@@ -769,16 +785,16 @@
       <h2>Créer un compte</h2>
       <form onsubmit="handleSignup(event)">
         <div class="form-group">
-          <label>Nom complet</label>
-          <input type="text" required id="signupName">
+          <label for="signupName">Nom complet</label>
+          <input type="text" id="signupName" required>
         </div>
         <div class="form-group">
-          <label>Email ou Téléphone</label>
-          <input type="text" required id="signupEmail">
+          <label for="signupEmail">Email ou Téléphone</label>
+          <input type="text" id="signupEmail" required>
         </div>
         <div class="form-group">
-          <label>Mot de passe</label>
-          <input type="password" required id="signupPassword">
+          <label for="signupPassword">Mot de passe</label>
+          <input type="password" id="signupPassword" required>
         </div>
         <button type="submit" class="form-submit">S'inscrire</button>
       </form>
